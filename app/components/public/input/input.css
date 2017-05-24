@@ -1,0 +1,27 @@
+.container{
+
+    display: inline-block;
+    position: relative;
+}
+
+.searchIcon{
+
+    position: absolute;
+    width:14px;
+    display: none;
+    left: 10px;
+    top: 10px;
+}
+
+.inputCl{
+
+    height:33px;
+    width: 188px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F3F3F3;
+    text-align: left;
+    color: #A8ADB9;
+    text-indent: 30px;
+}
+

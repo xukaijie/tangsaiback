@@ -1,0 +1,58 @@
+#container{
+
+    width:400px;
+    height:300px;
+    position: absolute;
+    top:100px;
+    right:100px;
+    background-color: rgba(241, 176, 7, 0.76);;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+    ont-size: 14px;
+    font-family:"Hiragino Sans GB", "STHeitiSC-Light", "Microsoft Yahei", SimSun, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+#container .top{
+    margin-top: 80px;
+    margin-left: 65px;
+
+}
+
+.inputText{
+
+    height: 35px;
+    border: 0;
+    border-radius: 5px;
+    width: 200px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+#userid{
+
+    margin-bottom: 15px;
+}
+
+#loginId{
+
+    width:70px;
+    height:35px;
+    border:0;
+    border-radius:5px;
+    background: #524343;
+    color: #fff;
+    font-size: 14px;
+    margin-left:68px;
+    margin-top: 20px;
+}
+
+#loginId:hover{
+    cursor: pointer;
+}
+
+#imgId{
+    width: 70px;
+    margin-left: 150px;
+    margin-top: 20px;
+}

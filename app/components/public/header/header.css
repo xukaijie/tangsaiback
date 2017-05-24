@@ -1,0 +1,19 @@
+.container{
+
+    height:62px;
+    background-color: #ffffff;
+}
+
+.item{
+
+    float: right;
+    margin-right: 30px;
+    line-height: 62px;
+}
+
+.header{
+
+    width:40px;
+    vertical-align: middle;
+    margin-right: 10px;
+}

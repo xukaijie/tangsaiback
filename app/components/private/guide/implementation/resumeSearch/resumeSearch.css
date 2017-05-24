@@ -1,0 +1,218 @@
+/*ResumeScreening*/
+.container{
+    overflow: hidden;
+}
+.leftSide{
+    float: left;
+}
+.rightSide{
+    float: right;
+}
+/*resumeSearch*/
+.serchWrap{
+    box-sizing: border-box;
+    width:655px;
+    background-color: #ffffff;
+    padding:10px;
+    padding-left: 30px;
+
+}
+.sinSlect{
+    background-color: #F3F3F3;
+    position: relative;
+    margin-bottom: 10px;
+    float: left;
+}
+.mr10{
+    margin-right: 10px;
+}
+.mr50{
+    margin-right: 50px;
+}
+.clear{
+    clear: both;
+}
+
+
+
+.join{
+    text-align: center;
+    width:20px;
+    display: inline-block;
+    line-height: 30px;
+    background-color: #ffffff;
+}
+
+.searchBtn{
+    box-sizing: border-box;
+    width:80px;
+    height:30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    background-color: #98CB00;
+    float: left;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+/*resumeList*/
+.mt10{
+    margin-top: 10px;
+}
+/*JobInformation*/
+.jobInforWrap{
+    width:265px;
+    height:261px;
+    background-color: #ffffff;
+}
+
+/*TalentDatabase*/
+.totleNum{
+    font-size: 12px;
+    color:#98CB00;
+    position: absolute;
+    top:-24px;
+    left:299px;
+}
+.delteBtn{
+    font-size: 12px;
+    text-align: center;
+    color:#ffffff;
+    background-color:#98CB00 ;
+    padding:3px 10px;
+    position: absolute;
+    top:-27px;
+    left:545px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.addBtn{
+    font-size: 12px;
+    text-align: center;
+    color:#ffffff;
+    background-color:#98CB00 ;
+    padding:3px 10px;
+    position: absolute;
+    top:-27px;
+    left:610px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.addBtnWarn{
+    font-size: 12px;
+    text-align: center;
+    color:#ffffff;
+    background-color:#cccccc ;
+    padding:3px 10px;
+    position: absolute;
+    top:-27px;
+    left:610px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+/*模态框*/
+.shadow{
+    position: fixed;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    left:0;
+    top:0;
+}
+.shadowContent{
+    box-sizing: border-box;
+    width:400px;
+    height:160px;
+    background-color: #ffffff;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left: -200px;
+    margin-top: -80px;
+    border-radius: 20px;
+    padding-top: 30px;
+    text-align: center;
+}
+.btnShadow{
+    display: inline-block;
+    background-color: #98CB00;
+    color: #fff;
+    line-height: 30px;
+    width:100px;
+    margin-top: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.textWarn{
+    color: #98CB00;
+}
+/*短信编辑*/
+.msgWrap{
+    box-sizing: border-box;
+    width: 500px;
+    height: 480px;
+    border-radius: 12px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -240px;
+    text-align: left;
+    padding-top: 50px;
+
+}
+.msgEditWrap{
+    padding-left: 58px;
+}
+.msgTitle{
+    font-size: 15px;
+    color:#98CB00;
+    text-align: left;
+    margin-bottom: 20px;
+    padding-left: 58px;
+}
+.msgEditTitle{
+    text-align: left;
+
+}
+.msgEdit{
+    width: 380px;
+    height: 220px;
+    border: 1px solid #b8c1d2;
+    margin-top: 8px;
+    border-radius: 4px;
+    color: #333333;
+    line-height: 20px;
+    padding: 5px;
+    font-size: 14px;
+    text-align: left;
+
+}
+.btnWrap{
+    text-align: center;
+}
+.msgEditWarn{
+    position: absolute;
+    left:135px;
+    top:90px;
+    color: #CC0000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

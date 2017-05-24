@@ -1,0 +1,44 @@
+.sucmodal{
+    position: fixed;
+    width:226px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    top:50%;
+    left: 50%;
+    margin-left:-100px;
+    background: #333;
+    font-size: 14px;
+    color: #FFFFFF;
+    border-radius: 8px;
+    z-index: 999999;
+}
+
+.tipmodal{
+
+    position: fixed;
+    width:226px;
+    height: 200px;
+    line-height: 60px;
+    text-align: center;
+    top:50%;
+    left: 50%;
+    margin-left:-100px;
+    background: #333;
+    font-size: 14px;
+    color: #FFFFFF;
+    border-radius: 8px;
+    z-index: 999999;
+}
+
+.tipmodal input{
+
+    height:50px;
+    width: 180px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F3F3F3;
+    text-align: left;
+    color: #A8ADB9;
+    text-indent: 20px;
+}

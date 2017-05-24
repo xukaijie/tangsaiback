@@ -1,0 +1,67 @@
+#pagination{
+    height:22px;
+    background: #FFFFFF;
+    color: #333333;
+    font-size: 12px;
+    display: inline-block;
+}
+
+
+#pagination .common{
+
+    display: inline-block;
+    height:20px;
+    line-height: 20px;
+    border-left: 1px solid #C8C8C8;
+    width:24px;
+    text-align: center;
+}
+
+#pagination .common:hover{
+
+    cursor: pointer;
+}
+
+#prevPage{
+
+    border-left: 1px solid #C8C8C8;
+    display: inline-block;
+    height:20px;
+    line-height: 20px;
+    width:64px;
+    text-align: center;
+}
+
+#prevPage:hover{
+    cursor: pointer;
+}
+
+#nextPage{
+
+    display: inline-block;
+    height:20px;
+    line-height: 20px;
+    width:65px;
+    text-align: center;
+}
+
+#nextPage:hover{
+    cursor: pointer;
+}
+
+#allpage{
+
+    size: 12px;
+    margin-left:9px;
+    margin-right: 12px;
+}
+
+#numpage{
+
+    height:20px;
+    line-height: 20px;
+    border: 1px solid #C8C8C8;
+    width:38px;
+    text-align: center;
+}
+

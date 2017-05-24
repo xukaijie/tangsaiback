@@ -1,0 +1,66 @@
+.container{
+    height: 150px;
+    display: inline-block;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
+
+.provCon{
+
+    width:100px;
+    display: inline-block;
+    overflow: auto;
+    height: 100%;
+    vertical-align: top;
+    border-right: 1px solid #cccccc;
+}
+
+.provCon li{
+
+    height:25px;
+    text-align: center;
+}
+
+.cityCon{
+
+    width:100px;
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    overflow: auto;
+    line-height: 20px;
+    border-right: 1px solid #cccccc;
+
+}
+
+
+.cityCl{
+
+    height:25px;
+    text-align: center;
+}
+
+.areaCon{
+
+    width:100px;
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    overflow: auto;
+    line-height: 20px;
+
+}
+
+
+.areaCl{
+
+    height:25px;
+    text-align: center;
+}
+
+.areaCl:hover{
+
+    cursor: pointer;
+    color: #99CC00;
+}
+

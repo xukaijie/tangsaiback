@@ -1,0 +1,36 @@
+.table{
+
+    width: 100%;
+    background: #F7F8FA;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.table thead,tbody{
+
+    background-color: #ffffff;
+}
+
+.table thead tr td {
+    height: 30px;
+    vertical-align: middle;
+    color: #827B7B;
+    border-bottom: 1px dotted #F3E6E6;
+}
+
+.table tbody tr:hover{
+
+    cursor: pointer;
+    background-color: #cccccc;
+}
+
+.table tbody tr td {
+    min-height: 30px;
+    vertical-align: middle;
+    max-width: 200px;
+    word-wrap: break-word;
+    margin-top: 10px;
+    line-height: 40px;
+    min-width: 50px;
+    border-bottom: 1px dotted #F3E6E6;
+}

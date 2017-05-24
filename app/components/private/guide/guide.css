@@ -1,0 +1,20 @@
+.container{
+
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 10px;
+
+}
+
+.leftSide{
+
+    float: left;
+}
+
+.rightSide{
+
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 950px;
+}
