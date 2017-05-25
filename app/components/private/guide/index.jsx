@@ -7,6 +7,8 @@ import style from './guide.css';
 import Nav from 'pubComp/nav/nav.jsx';
 import Header from 'pubComp/header/header.jsx';
 
+import ProductList from 'pubComp/productList/productList.jsx';
+
 class Guide extends Component {
 
     constructor(props){
@@ -54,7 +56,7 @@ class Guide extends Component {
 
                     <Header {...this.props}/>
                     <br/>
-                   {/* <ProductList />*/}
+                    <ProductList />
 
                 </div>
             </div>
