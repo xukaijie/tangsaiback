@@ -10,7 +10,7 @@ import {fExportGetCookieMes} from 'cmPath/common.jsx';
 
 import {USERID} from 'cmPath/config.jsx';
 
-import {login} from 'actionPath/userAction.jsx';
+import {login} from 'actionPath/productAction.jsx';
 
 import style from "./login.css";
 

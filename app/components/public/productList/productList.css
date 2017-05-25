@@ -2,7 +2,6 @@
 
     width:800px;
     margin: 0 auto;
-    border:1px solid #cccccc;
     font-size: 16px;
     text-align: center;
 }
@@ -10,6 +9,9 @@
 .upLoadCon{
 
     text-align: center;
+
+    border:1px solid #cccccc;
+
 }
 
 .imgShow{

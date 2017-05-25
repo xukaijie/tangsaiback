@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 
 import style from './productList.css';
 
+import {HOST} from 'cmPath/config.jsx';
+
 export default class ProductList extends React.Component {
 
     constructor(props){
@@ -16,7 +18,9 @@ export default class ProductList extends React.Component {
         this.state = {
 
             files:[],
-            name:""
+            name:"",
+
+            productList:[]
         }
     }
 
@@ -62,44 +66,34 @@ export default class ProductList extends React.Component {
     }
 
 
-    handleload(file, idx) {
-        return new Promise((resolve, reject) => {
-            let xhr = new XMLHttpRequest()
-            if (xhr.upload) {
-                // 上传中
-               /* xhr.upload.addEventListener('progress', (e) => {
-                    // 处理上传进度
-                    this.handleProgress(file, e.loaded, e.total, idx)
-                }, false)
-                // 上传成功或者失败*/
-                xhr.onreadystatechange = (e) => {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            // 上传成功操作
-                            resolve(xhr.responseText)
-                        }
-                    } else {
-                        // 上传出错处理
-                        reject(xhr.responseText)
-                    }
-                }
-            }
-            // 开始上传
-            xhr.open("POST", "https://localhost:3000/upload", true)
-            let form = new FormData()
-            form.append("filedata", file)
 
-            xhr.send(form)
-        })
-    }
 
     _upload(){
 
-    let _promises = this.state.files.map((file, idx) => this.handleload(file, idx))
-        Promise.all(_promises).then((res) => {
-        // 全部上传完成
-        alert("上传成功")
-    },()=>{alert("上传失败")}).catch((err) => { console.log(err) })
+        var info = this.props.productList;
+
+        var root = info.rootName;
+
+        var parent = info.parentName;
+
+        var url = HOST+"upload?root="+root+"&parent="+parent+"&name="+this.state.name;
+
+        let xhr = new XMLHttpRequest()
+
+        // 开始上传
+        xhr.open("POST", url, true)
+        let form = new FormData();
+
+
+
+
+        form.append("filedata", this.state.files[0]);
+
+        console.log(form)
+
+        xhr.send(form);
+
+        alert("提交成功")
 }
 
     subBtn = (e)=>{
@@ -123,9 +117,18 @@ export default class ProductList extends React.Component {
 
     render(){
 
+        var info = this.props.productList;
         return (
 
             <div className={style.container}>
+
+                <div>
+
+                    <span>{info.rootName}</span>
+                    <span>-></span>
+                    <span>{info.parentName}</span>
+                </div>
+
 
                 <div className={style.upLoadCon}>
 

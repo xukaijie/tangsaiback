@@ -1,13 +1,10 @@
-export const LOGINOK = "LOGINOK";
+export const GETPRODUCTLIST = "GETPRODUCTLIST";
 
-export const LOGOUT  = "LOGOUT";
+import  HOST from 'cmPath/config.jsx';
 
+export const getproductlist = (node,parent,successcallback,failcallback)=> {
 
-import {HOST,VERSION} from 'cmPath/config.jsx';
-
-export const login = (user,password,successcallback,failcallback)=> {
-
-    let url = HOST + VERSION + "login?account=" + user + "&password=" + password;
+    let url = HOST +"product_list?node="+node+"&parent="+parent;
 
     return dispatch => {
 
@@ -20,7 +17,7 @@ export const login = (user,password,successcallback,failcallback)=> {
                 if (response.ok) {
                     response.json().then(json => {
                         if (json[0] == 0) {
-                            dispatch({type: LOGINOK,data:json[1]});
+                            dispatch({type: GETPRODUCTLIST,data:json[1]});
                             if (successcallback)
                                 successcallback()
                         }else if (failcallback){

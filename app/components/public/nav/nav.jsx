@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, Redirect, hashHistory, browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
 
+import {getproductlist} from 'actionPath/productAction.jsx';
+
 import style from './nav.css';
 
 export default class Nav extends React.Component {
@@ -114,10 +116,11 @@ export default class Nav extends React.Component {
         e.stopPropagation();
 
         let state = {...this.state}
+        var {dispatch}=this.props
 
         if (state.item[index].child.length == 0) {
 
-            /*进行路由跳转*/
+            dispatch(getproductlist(state.item[index].name,""))
         } else {
 
             state.item[index].childshow = !state.item[index].childshow;
@@ -127,9 +130,15 @@ export default class Nav extends React.Component {
 
     clickSecondLi = (index, ind, e) => {
 
+        var {dispatch}=this.props;
+
         e.stopPropagation();
 
-        browserHistory.push(this.state.item[index].child[ind].link)
+        var parent = state.item[index].child[ind].name;
+
+        dispatch(getproductlist(state.item[index].name,parent))
+
+
     }
 
     secondUlShow = (index) => {

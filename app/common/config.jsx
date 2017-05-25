@@ -1,10 +1,6 @@
 
- export const HOST = process.env.HOST;
- export const VERSION = '/ms/2.0/';
+ export const HOST = 'http://localhost:3000/';
 
- export const TOKEN = "back_token";
-
- export const USERID="back_userid";
 
  export const DATAFORMATE="yyyy/MM/dd hh:mm";
 

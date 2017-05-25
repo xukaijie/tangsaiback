@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import style from './guide.css';
 
 import Nav from 'pubComp/nav/nav.jsx';
-import Header from 'pubComp/header/header.jsx';
 
 import ProductList from 'pubComp/productList/productList.jsx';
 
@@ -48,15 +47,14 @@ class Guide extends Component {
 
                 <div className={style.leftSide}>
 
-                    <Nav />
+                    <Nav {...this.props}/>
 
                 </div>
 
                 <div className={style.rightSide}>
 
-                    <Header {...this.props}/>
                     <br/>
-                    <ProductList />
+                    <ProductList {...this.props}/>
 
                 </div>
             </div>
@@ -66,5 +64,5 @@ class Guide extends Component {
 
 module.exports = connect((state)=>{
 
-    return {userList:state.userList}
+    return {productList:state.productList}
 })(Guide);
