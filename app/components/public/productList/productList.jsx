@@ -57,10 +57,69 @@ export default class ProductList extends React.Component {
 
         this.setState({
 
-            nam
+            name:e.target.value
         })
     }
 
+
+    handleload(file, idx) {
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest()
+            if (xhr.upload) {
+                // 上传中
+               /* xhr.upload.addEventListener('progress', (e) => {
+                    // 处理上传进度
+                    this.handleProgress(file, e.loaded, e.total, idx)
+                }, false)
+                // 上传成功或者失败*/
+                xhr.onreadystatechange = (e) => {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            // 上传成功操作
+                            resolve(xhr.responseText)
+                        }
+                    } else {
+                        // 上传出错处理
+                        reject(xhr.responseText)
+                    }
+                }
+            }
+            // 开始上传
+            xhr.open("POST", "https://localhost:3000/upload", true)
+            let form = new FormData()
+            form.append("filedata", file)
+
+            xhr.send(form)
+        })
+    }
+
+    _upload(){
+
+    let _promises = this.state.files.map((file, idx) => this.handleload(file, idx))
+        Promise.all(_promises).then((res) => {
+        // 全部上传完成
+        alert("上传成功")
+    },()=>{alert("上传失败")}).catch((err) => { console.log(err) })
+}
+
+    subBtn = (e)=>{
+
+        e.stopPropagation();
+
+        if (this.state.name == ''){
+
+            alert("请填写产品名称");
+            return;
+        }
+
+        if (this.state.files.length == 0){
+
+            alert("请上传产品图片");
+            return;
+        }
+
+        this._upload();
+    }
 
     render(){
 
@@ -97,6 +156,10 @@ export default class ProductList extends React.Component {
                                             class="upload-submit-btn">确认上传图片</button>
                                 </div>
                                 <div className="upload-info">{this._renderUploadInfos()}</div>*/}
+                            <div>
+
+                                <input type="button" className={style.submitBtn} value="提交" onClick={this.subBtn.bind(this)}/>
+                            </div>
 
                         </form>
                     </div>
@@ -109,10 +172,6 @@ export default class ProductList extends React.Component {
 
                 </div>
 
-                <div>
-
-                    <input type="button" className={style.submitBtn} value="提交"/>
-                </div>
 
             </div>
 
