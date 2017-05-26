@@ -1,10 +1,10 @@
 export const GETPRODUCTLIST = "GETPRODUCTLIST";
 
-import  HOST from 'cmPath/config.jsx';
+import {HOST} from 'cmPath/config.jsx';
 
-export const getproductlist = (node,parent,successcallback,failcallback)=> {
+export const getproductlist = (root,parent,currentpage,successcallback,failcallback)=> {
 
-    let url = HOST +"product_list?node="+node+"&parent="+parent;
+    let url = HOST +"product_list?root="+root+"&parent="+parent+"&currentpage="+currentpage+"&pagesize=10";
 
     return dispatch => {
 
@@ -16,8 +16,8 @@ export const getproductlist = (node,parent,successcallback,failcallback)=> {
             .then(response => {
                 if (response.ok) {
                     response.json().then(json => {
-                        if (json[0] == 0) {
-                            dispatch({type: GETPRODUCTLIST,data:json[1]});
+                        if (json.err == 0) {
+                            dispatch({type: GETPRODUCTLIST,data:json});
                             if (successcallback)
                                 successcallback()
                         }else if (failcallback){

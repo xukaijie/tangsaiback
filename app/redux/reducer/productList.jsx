@@ -8,7 +8,7 @@ const initialstate={
 	rootName:'Flashlights',
 	parentName:'echargeable Flashlights',
 	list:[],
-	currentPage:0,
+	currentPage:1,
 	maxPage:4
 
 

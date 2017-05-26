@@ -10,6 +10,8 @@ import style from './productList.css';
 
 import {HOST} from 'cmPath/config.jsx';
 
+import {getproductlist} from 'actionPath/productAction.jsx'
+
 export default class ProductList extends React.Component {
 
     constructor(props){
@@ -22,6 +24,22 @@ export default class ProductList extends React.Component {
 
             productList:[]
         }
+    }
+
+
+
+    componentDidMount(){
+
+        var {dispatch,productList} = this.props;
+
+        var root = productList.rootName.replace(" ","");
+
+        var parent = productList.parentName.replace(" ","");
+
+        var currentpage = productList.currentPage;
+
+
+        dispatch(getproductlist(root,parent,currentpage))
     }
 
     handleChange(event) {
@@ -72,11 +90,13 @@ export default class ProductList extends React.Component {
 
         var info = this.props.productList;
 
-        var root = info.rootName;
+        var root = info.rootName.replace(" ","");
 
-        var parent = info.parentName;
+        var parent = info.parentName.replace(" ","");
+        var name = this.state.name.replace(" ","")
 
-        var url = HOST+"upload?root="+root+"&parent="+parent+"&name="+this.state.name;
+        var url = HOST+"upload?root="+root+"&parent="+parent+"&name="+name;
+
 
         let xhr = new XMLHttpRequest()
 
