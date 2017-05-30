@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, Redirect, hashHistory, browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
 
-import {getproductlist} from 'actionPath/productAction.jsx';
+import {getproductlist,changeEeducer,CHANGE} from 'actionPath/productAction.jsx';
 
 import style from './nav.css';
 
@@ -96,7 +96,7 @@ export default class Nav extends React.Component {
                         childshow: false
                     },
                     {
-                        name: "Night Light",
+                        name: "Night Lights",
                         img: require('./imgs/u441.png'),
                         child: [],
                         childshow: false
@@ -120,7 +120,7 @@ export default class Nav extends React.Component {
 
         if (state.item[index].child.length == 0) {
 
-            dispatch(getproductlist(state.item[index].name,""))
+            dispatch({type:CHANGE,root:this.state.item[index].name,parent:'ALL'})
         } else {
 
             state.item[index].childshow = !state.item[index].childshow;
@@ -134,9 +134,8 @@ export default class Nav extends React.Component {
 
         e.stopPropagation();
 
-        var parent = state.item[index].child[ind].name;
 
-        dispatch(getproductlist(state.item[index].name,parent))
+        dispatch({type:CHANGE,root:this.state.item[index].name,parent:this.state.item[index].child[ind].name})
 
 
     }

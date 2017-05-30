@@ -1,5 +1,7 @@
 export const GETPRODUCTLIST = "GETPRODUCTLIST";
 
+export const CHANGE = 'CHANGE';
+
 import {HOST} from 'cmPath/config.jsx';
 
 export const getproductlist = (root,parent,currentpage,successcallback,failcallback)=> {

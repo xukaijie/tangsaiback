@@ -90,12 +90,12 @@ export default class ProductList extends React.Component {
 
         var info = this.props.productList;
 
-        var root = info.rootName.replace(" ","");
+        var root = info.rootName
 
-        var parent = info.parentName.replace(" ","");
-        var name = this.state.name.replace(" ","")
+        var parent = info.parentName
+        var name = this.state.name
 
-        var url = HOST+"upload?root="+root+"&parent="+parent+"&name="+name;
+        var url = HOST+"upload";
 
 
         let xhr = new XMLHttpRequest()
@@ -104,7 +104,11 @@ export default class ProductList extends React.Component {
         xhr.open("POST", url, true)
         let form = new FormData();
 
+        form.append('root',root);
 
+        form.append('parent',parent);
+
+        form.append('name',name)
 
 
         form.append("filedata", this.state.files[0]);
