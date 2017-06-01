@@ -71,3 +71,17 @@
 
     cursor: pointer;
 }
+
+.descCon{
+
+    width:300px;
+    height:300px;
+    border: 1px solid #cccccc;
+}
+
+.ftcon{
+
+
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
+}

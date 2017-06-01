@@ -13,11 +13,11 @@ module.exports = {
     output: {
         path: __dirname+'/dist/',
         filename: 'bundle.js',
-        publicPath:"/dist/",
+        publicPath:"dist/",
     },
     devServer:{
         contentBase:__dirname,
-        publicPath:"/dist/",
+        publicPath:"dist/",
         hot:true,
         historyApiFallback:true,
         port:9003,

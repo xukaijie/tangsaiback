@@ -22,7 +22,9 @@ export default class ProductList extends React.Component {
             files:[],
             name:"",
 
-            productList:[]
+            productList:[],
+            descp:"",
+            feature:[{value:""},{value:""},{value:""},{value:""}]
         }
     }
 
@@ -108,8 +110,20 @@ export default class ProductList extends React.Component {
 
         form.append('parent',parent);
 
-        form.append('name',name)
+        form.append('name',name);
+        form.append('descript',this.state.descp);
 
+        var ft = this.state.feature;
+        var ftArray = [];
+        for (var i = 0;i<ft.length;i++){
+
+            if (ft[i].value != ''){
+
+                ftArray.push(ft[i].value)
+            }
+        }
+
+        form.append('ftArray',ftArray);
 
         form.append("filedata", this.state.files[0]);
 
@@ -136,12 +150,47 @@ export default class ProductList extends React.Component {
             return;
         }
 
+
+        if (this.state.descp == ''){
+
+            alert("请添加产品描述");
+            return;
+        }
+
+
+
         this._upload();
+    }
+
+
+    addSescript = (e)=>{
+
+        e.stopPropagation();
+
+        this.setState({
+
+            descp:e.target.value
+        })
+    }
+
+    changeFt = (index,e)=>{
+
+        e.stopPropagation();
+
+        var _state = {...this.state};
+
+        _state.feature[index].value = e.target.value;
+
+        this.setState(_state);
+
+
     }
 
     render(){
 
         var info = this.props.productList;
+
+        var thiz = this;
         return (
 
             <div className={style.container}>
@@ -192,9 +241,32 @@ export default class ProductList extends React.Component {
                     </div>
 
                     <div className={style.prodName}>
-
-                        <span>名称:</span>
+                    <div>
+                        <span>名称名称:</span>
                         <input className={style.nameInput} value={this.state.name} onChange={this.setName.bind(this)}/>
+                    </div>
+
+                        <div>
+                            <span>产品描述：</span>
+
+                            <textarea value={this.state.descp} className={style.descCon} onChange={this.addSescript.bind(this)}></textarea>
+
+                        </div>
+
+                        <div>
+
+                            <span>产品特性：</span>
+                            {
+
+                                this.state.feature.map(function(ft,index){
+
+
+                                    return <input value={ft.value} className={style.ftcon} onChange={thiz.changeFt.bind(thiz,index)}/>
+                                })
+                            }
+
+                        </div>
+
                     </div>
 
                 </div>
