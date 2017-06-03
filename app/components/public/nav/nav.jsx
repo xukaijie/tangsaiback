@@ -16,6 +16,8 @@ export default class Nav extends React.Component {
         super(props);
         this.state = {
 
+            current:['',''],
+
             item: [
                     {
                         name: "Flashlights",
@@ -124,19 +126,50 @@ export default class Nav extends React.Component {
         } else {
 
             state.item[index].childshow = !state.item[index].childshow;
+/*
+            state.current[0] = index
+*/
             this.setState(state)
         }
+    }
+
+
+    getCurrent = (index,ind)=>{
+
+        if (this.state.current[0] == index && this.state.current[1] == ind){
+
+            return {color:"#70dd50"}
+        }
+
+        return {};
     }
 
     clickSecondLi = (index, ind, e) => {
 
         var {dispatch}=this.props;
 
+        var _state = {...this.state};
+
+        _state.current[1] = ind;
+        _state.current[0] = index;
+
+        for (var i = 0; i < _state.item.length;i++){
+
+            if (i != index){
+
+                _state.item[i].childshow = false;
+            }
+        }
+
         e.stopPropagation();
 
 
         dispatch({type:CHANGE,root:this.state.item[index].name,parent:this.state.item[index].child[ind].name})
 
+
+
+
+        this.setState(_state)
 
     }
 
@@ -182,7 +215,7 @@ export default class Nav extends React.Component {
                                                     return (
 
                                                         <li key={"child" + ind} className={style.secondLi}>
-                                                            <span
+                                                            <span style={thiz.getCurrent(index,ind)}
                                                                 onClick={thiz.clickSecondLi.bind(thiz, index, ind)}>{child.name}</span>
                                                         </li>
                                                     )
