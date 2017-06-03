@@ -111,7 +111,7 @@ export default class ProductList extends React.Component {
         form.append('parent',parent);
 
         form.append('name',name);
-        form.append('descript',this.state.descp);
+        form.append('descp',this.state.descp);
 
         var ft = this.state.feature;
         var ftArray = [];
@@ -119,11 +119,20 @@ export default class ProductList extends React.Component {
 
             if (ft[i].value != ''){
 
-                ftArray.push(ft[i].value)
+                ftArray.push(ft[i].value);
             }
         }
 
-        form.append('ftArray',ftArray);
+        var ftstring = ''
+        for (var i = 0;i < ftArray.length;i++){
+
+            ftstring+=ftArray[i];
+
+            if (i != ftArray.length-1)
+                ftstring+="_";
+        }
+
+        form.append('feature',ftstring);
 
         form.append("filedata", this.state.files[0]);
 
