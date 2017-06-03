@@ -1,5 +1,5 @@
 
- export const HOST = 'http://localhost:3000/';
+ export const HOST = 'http://tslighting.cn:3000/';
 
 
  export const DATAFORMATE="yyyy/MM/dd hh:mm";

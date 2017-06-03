@@ -25,7 +25,7 @@ const checkAccount = (state,replace)=>{
 }*/
 
 const RouteConfig = (
-    <Router history={browserHistory}>
+    <Router history={hashHistory}>
         <Route path="/" component={Roots}>
             <IndexRoute getComponent={lazyLoadPage('guide')} />
            {/* <Route path="login" getComponent={lazyLoadPage('login')} />*/}
