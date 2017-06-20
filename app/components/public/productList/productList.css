@@ -85,3 +85,13 @@
     border: 1px solid #cccccc;
     margin-bottom: 10px;
 }
+
+.delBtn{
+
+    border: none;
+
+    width:50px;
+    height:30px;
+    color: #ffffff;
+
+}

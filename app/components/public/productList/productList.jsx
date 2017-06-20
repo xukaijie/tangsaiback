@@ -24,7 +24,9 @@ export default class ProductList extends React.Component {
 
             productList:[],
             descp:"",
-            feature:[{value:""},{value:""},{value:""},{value:""}]
+            feature:[{value:""},{value:""},{value:""},{value:""}],
+            specials:[{value:""},{value:""},{value:""},{value:""},{value:""},{value:""}],
+            deleteName:""
         }
     }
 
@@ -32,7 +34,7 @@ export default class ProductList extends React.Component {
 
     componentDidMount(){
 
-        var {dispatch,productList} = this.props;
+  /*      var {dispatch,productList} = this.props;
 
         var root = productList.rootName.replace(" ","");
 
@@ -41,7 +43,7 @@ export default class ProductList extends React.Component {
         var currentpage = productList.currentPage;
 
 
-        dispatch(getproductlist(root,parent,currentpage))
+        dispatch(getproductlist(root,parent,currentpage))*/
     }
 
     handleChange(event) {
@@ -134,9 +136,29 @@ export default class ProductList extends React.Component {
 
         form.append('feature',ftstring);
 
+        var sp = this.state.specials;
+        var spArray = [];
+        for (var i = 0;i<sp.length;i++){
+
+            if (sp[i].value != ''){
+
+                spArray.push(sp[i].value);
+            }
+        }
+
+        var spstring = ''
+        for (var i = 0;i < spArray.length;i++){
+
+            spstring+=spArray[i];
+
+            if (i != spArray.length-1)
+                spstring+="_";
+        }
+
+        form.append('special',spstring);
+
         form.append("filedata", this.state.files[0]);
 
-        console.log(form)
 
         xhr.send(form);
 
@@ -193,6 +215,75 @@ export default class ProductList extends React.Component {
         this.setState(_state);
 
 
+    }
+
+
+    changeSp = (index,e)=>{
+
+        e.stopPropagation();
+
+        var _state = {...this.state};
+
+        _state.specials[index].value = e.target.value;
+
+        this.setState(_state);
+
+
+    }
+
+    setValue = (key,e)=>{
+
+        e.stopPropagation();
+
+        var _state = {...this.state};
+
+        _state[key] = e.target.value;
+
+        this.setState(_state)
+
+    }
+
+
+    deleteProd = (e)=>{
+        e.stopPropagation();
+
+
+        var url = HOST+'delete';
+
+        var info = this.props.productList;
+
+        var root = info.rootName
+
+        var body = {
+
+            name:this.state.deleteName,
+            root:root
+        }
+
+        return fetch(url,{
+            method: "post",
+            "Content-Type": "application/json",
+            body: JSON.stringify(body)
+
+        })
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(json => {
+                        if (json.err == 0){
+
+                            alert('删除成功')
+                        }else{
+
+                            alert('删除失败')
+
+                        }
+
+                    })
+                } else {
+
+                }
+            })
+            .catch(error => console.log(error))
     }
 
     render(){
@@ -276,7 +367,32 @@ export default class ProductList extends React.Component {
 
                         </div>
 
+                        <div>
+
+                            <span>产品规格：</span>
+                            {
+
+                                this.state.specials.map(function(sp,index){
+
+
+                                    return <input value={sp.value} className={style.ftcon} onChange={thiz.changeSp.bind(thiz,index)}/>
+                                })
+                            }
+
+                        </div>
+
                     </div>
+
+                </div>
+
+
+                <div>
+                    <h1>删除产品</h1>
+
+                    <span>产品名称</span>
+                    <input value={this.state.deleteName} onChange={this.setValue.bind(this,'deleteName')} style={{width:"300px",height:"30px"}}/>
+
+                    <input value="确定" type="button" className={style.delBtn} onClick={this.deleteProd.bind(thiz)}/>
 
                 </div>
 
