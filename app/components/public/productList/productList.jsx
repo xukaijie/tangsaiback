@@ -26,7 +26,9 @@ export default class ProductList extends React.Component {
             descp:"",
             feature:[{value:""},{value:""},{value:""},{value:""}],
             specials:[{value:""},{value:""},{value:""},{value:""},{value:""},{value:""}],
-            deleteName:""
+            deleteName:"",
+
+            subfiles:[]
         }
     }
 
@@ -63,6 +65,29 @@ export default class ProductList extends React.Component {
         this.setState({files: files})
     }
 
+
+    handleSubChange(event,index) {
+        event.preventDefault()
+        let target = event.target
+        let files = target.files
+
+        let count = this.state.multiple ? files.length : 1
+        for (let i = 0; i < count; i++) {
+            files[i].thumb = URL.createObjectURL(files[i])
+        }
+        // convert to array
+        files = Array.prototype.slice.call(files, 0)
+        files = files.filter(function (file) {
+            return /image/i.test(file.type)
+        })
+
+        var _state = {...this.state};
+
+        _state.subfiles[index] = files;
+
+        this.setState(_state)
+    }
+
     _renderPreview() {
         if (this.state.files.length != 0) {
             return this.state.files.map((item, idx) => {
@@ -75,6 +100,20 @@ export default class ProductList extends React.Component {
         } else {
             return null;
         }
+    }
+
+    _renderSubPreview(index){
+
+        var thiz = this;
+        if (this.state.subfiles[index]) {
+           return <div>
+                <img src={thiz.state.subfiles[index][0].thumb}/>
+            </div>
+
+        } else {
+            return null;
+        }
+
     }
 
     setName = (e)=>{
@@ -160,7 +199,50 @@ export default class ProductList extends React.Component {
         form.append("filedata", this.state.files[0]);
 
 
+        var subfile_num = 0;
+        for (var i = 0;i < this.state.subfiles.length;i++){
+
+            if (this.state.subfiles[i]){
+
+                form.append("filedata"+(i+1), this.state.subfiles[i][0]);
+                subfile_num++;
+            }
+        }
+
+
+        form.append("subfile_num", subfile_num);
+
+
         xhr.send(form);
+
+
+
+
+      /*  var url2 = HOST+"uploadsub";
+
+
+
+        for (var i = 0;i < this.state.subfiles.length;i++){
+
+            if (this.state.subfiles[i]){
+
+                var  xhr2= new XMLHttpRequest()
+
+                // 开始上传
+                xhr2.open("POST", url2, true)
+
+                var  form2 = new FormData();
+                form2.append("filedata", this.state.subfiles[i][0]);
+                form2.append('root',root);
+
+                form2.append('parent',parent);
+
+                form2.append('name',name);
+                xhr2.send(form2);
+
+            }
+        }*/
+
 
         alert("提交成功")
 }
@@ -332,12 +414,111 @@ export default class ProductList extends React.Component {
                                             class="upload-submit-btn">确认上传图片</button>
                                 </div>
                                 <div className="upload-info">{this._renderUploadInfos()}</div>*/}
-                            <div>
-
-                                <input type="button" className={style.submitBtn} value="提交" onClick={this.subBtn.bind(this)}/>
-                            </div>
 
                         </form>
+
+                        <form  method="post" encType="multipart/form-data">
+
+                            <input
+                                type="file"
+                                onChange={(v)=>this.handleSubChange(v,0)}
+                                name="fileSelect"
+                                accept="image/*"
+                                multiple={false} />
+
+
+                            <div  className={style.imgShow}>
+                                {this._renderSubPreview(0)}
+                            </div>
+
+                            {/*<div className={this.state.files.length?
+                             "upload-submit":"upload-submit ry-hidden"}>
+                             <button type="button"
+                             onClick={()=>this.handleUpload()}
+                             class="upload-submit-btn">确认上传图片</button>
+                             </div>
+                             <div className="upload-info">{this._renderUploadInfos()}</div>*/}
+
+                        </form>
+
+                        <form  method="post" encType="multipart/form-data">
+
+                            <input
+                                type="file"
+                                onChange={(v)=>this.handleSubChange(v,1)}
+                                name="fileSelect"
+                                accept="image/*"
+                                multiple={false} />
+
+
+                            <div  className={style.imgShow}>
+                                {this._renderSubPreview(1)}
+                            </div>
+
+                            {/*<div className={this.state.files.length?
+                             "upload-submit":"upload-submit ry-hidden"}>
+                             <button type="button"
+                             onClick={()=>this.handleUpload()}
+                             class="upload-submit-btn">确认上传图片</button>
+                             </div>
+                             <div className="upload-info">{this._renderUploadInfos()}</div>*/}
+
+                        </form>
+
+                        <form  method="post" encType="multipart/form-data">
+
+                            <input
+                                type="file"
+                                onChange={(v)=>this.handleSubChange(v,2)}
+                                name="fileSelect"
+                                accept="image/*"
+                                multiple={false} />
+
+
+                            <div  className={style.imgShow}>
+                                {this._renderSubPreview(2)}
+                            </div>
+
+                            {/*<div className={this.state.files.length?
+                             "upload-submit":"upload-submit ry-hidden"}>
+                             <button type="button"
+                             onClick={()=>this.handleUpload()}
+                             class="upload-submit-btn">确认上传图片</button>
+                             </div>
+                             <div className="upload-info">{this._renderUploadInfos()}</div>*/}
+
+                        </form>
+
+                        <form  method="post" encType="multipart/form-data">
+
+                            <input
+                                type="file"
+                                onChange={(v)=>this.handleSubChange(v,3)}
+                                name="fileSelect"
+                                accept="image/*"
+                                multiple={false} />
+
+
+                            <div  className={style.imgShow}>
+                                {this._renderSubPreview(3)}
+                            </div>
+
+                            {/*<div className={this.state.files.length?
+                             "upload-submit":"upload-submit ry-hidden"}>
+                             <button type="button"
+                             onClick={()=>this.handleUpload()}
+                             class="upload-submit-btn">确认上传图片</button>
+                             </div>
+                             <div className="upload-info">{this._renderUploadInfos()}</div>*/}
+
+                        </form>
+
+
+                        <div>
+
+                            <input type="button" className={style.submitBtn} value="提交" onClick={this.subBtn.bind(this)}/>
+                        </div>
+
                     </div>
 
                     <div className={style.prodName}>
